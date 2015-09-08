@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015/07/14 16:37:29.000.277,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2015/09/08 13:09:56.000.095,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2015/09/08 13:10:27.000.878,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_ConectionDmod.pas</Transaction>
+    <Transaction>2015/09/08 13:10:27.000.843,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_AboutForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:27.000.914,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_DualListDM.pas</Transaction>
+    <Transaction>2015/09/08 13:10:27.000.961,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_DualListForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.128,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_MainForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.094,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_LoginForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.838,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_Utils.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.750,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_StandarForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.412,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_ProviderDMod.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.579,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_ReportDMod.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.617,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_ReportForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.375,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_ProgressForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.674,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_SplashForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.712,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_StandarDMod.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.055,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_GridForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.003,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_EditForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.343,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_MainRibbonForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:28.000.819,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\_StandarGridForm.pas</Transaction>
+    <Transaction>2015/09/08 13:10:44.000.081,=C:\Users\hucj1e3\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2015/09/08 13:11:23.000.146,C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\MainForm.pas=C:\Users\hucj1e3\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2015/09/08 13:11:23.000.146,C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\MainForm.dfm=C:\Users\hucj1e3\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2015/09/08 13:11:44.000.218,C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\Standard\Estandar.dproj=C:\Users\hucj1e3\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
