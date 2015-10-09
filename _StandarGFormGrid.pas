@@ -4,7 +4,7 @@
  Copyright (C) 2008-2015 - Jesus Huante Caballero
 
  ******************************************************************************)
-unit _StandarGridForm;
+unit _StandarGFormGrid;
 
 interface
 
@@ -31,11 +31,8 @@ uses
   System.Actions;
 
 type
-  T_frmStandarGrid = class(TForm)
+  T_frmStandarGFormGrid = class(TForm)
     DataSource: TDataSource;
-    pcMain: TPageControl;
-    tsGrid: TTabSheet;
-    tsData: TTabSheet;
     ilPageControl: TImageList;
     ActionList: TActionList;
     ilAction: TImageList;
@@ -49,19 +46,6 @@ type
     DataSetPost: TDataSetPost;
     DataSetCancel: TDataSetCancel;
     DataSetRefresh: TDataSetRefresh;
-    tbarData: TToolBar;
-    ScrollBox1: TScrollBox;
-    ToolButton10: TToolButton;
-    ToolButton11: TToolButton;
-    ToolButton12: TToolButton;
-    ToolButton13: TToolButton;
-    ToolButton14: TToolButton;
-    ToolButton15: TToolButton;
-    ToolButton16: TToolButton;
-    ToolButton17: TToolButton;
-    ToolButton18: TToolButton;
-    ToolButton19: TToolButton;
-    ToolButton20: TToolButton;
     cxStyleRepository1: TcxStyleRepository;
     cxsEven: TcxStyle;
     cxsOdd: TcxStyle;
@@ -70,7 +54,14 @@ type
     cxsInactive: TcxStyle;
     cxsDelete: TcxStyle;
     cxsActive: TcxStyle;
-    pnlMaster: TPanel;
+    pnlClose: TPanel;
+    pnlDetail3: TPanel;
+    splDetail3: TSplitter;
+    pnlDetail2: TPanel;
+    splDetail2: TSplitter;
+    pnlDetail1: TPanel;
+    splDetail1: TSplitter;
+    pnltoolbar: TPanel;
     tbarGrid: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -83,16 +74,12 @@ type
     ToolButton9: TToolButton;
     ToolButton21: TToolButton;
     ToolButton22: TToolButton;
+    pnlMaster: TPanel;
     cxGrid: TcxGrid;
     tvMaster: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
-    pnlClose: TPanel;
-    pnlDetail3: TPanel;
-    splDetail3: TSplitter;
-    pnlDetail2: TPanel;
-    splDetail2: TSplitter;
-    pnlDetail1: TPanel;
-    splDetail1: TSplitter;
+    ToolButton10: TToolButton;
+    tbtnCerrar: TToolButton;
     procedure DataSetInsertExecute(Sender: TObject);
     procedure pcMainChanging(Sender: TObject; var AllowChange: Boolean);
     procedure FormShow(Sender: TObject);
@@ -107,8 +94,12 @@ type
     { Private declarations }
     FReadOnlyGrid: Boolean;
     FDataSet: TDataSet;
+    FView: Boolean;
+    FCerrarGrid: TBasicAction;
     procedure SetReadOnlyGrid(const Value: Boolean);
+    procedure SetView(const Value: Boolean);
     procedure SetDataSet(const Value: TDataSet);
+    procedure SetCerrarGrid(const Value: TBasicAction);
   protected
     tvStatus: TcxGridDBColumn;
     property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
@@ -118,6 +109,8 @@ type
     procedure GetContentStyle(pStatus: TcxGridDBColumn;
       pRecord: TcxCustomGridRecord; pItem: TcxCustomGridTableItem;
       out pStyle: TcxStyle);
+    property View: Boolean read FView write SetView default False;
+    property CerrarGrid : TBasicAction read FCerrarGrid write SetCerrarGrid;
   end;
 
 implementation
@@ -126,20 +119,15 @@ implementation
 
 uses _MainRibbonForm;
 
-procedure T_frmStandarGrid.DataSetDeleteExecute(Sender: TObject);
+procedure T_frmStandarGFormGrid.DataSetDeleteExecute(Sender: TObject);
 begin
   if MessageDlg(strAllowDelete, mtConfirmation, mbYesNo, 0) = mrYes
   then DataSource.DataSet.Delete;
 end;
 
-procedure T_frmStandarGrid.DataSetInsertExecute(Sender: TObject);
+procedure T_frmStandarGFormGrid.DataSetInsertExecute(Sender: TObject);
 begin
-  if tsData.TabVisible then
-  begin
-    if pcMain.ActivePage = tsGrid then
-      pcMain.ActivePage := tsData;
-    DataSource.DataSet.Insert;
-  end;
+
 end;
 
 //procedure T_StandarFrm.DBGridDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -160,7 +148,7 @@ end;
 //  DBGrid.SelectedRows.CurrentRowSelected
 //end;
 
-procedure T_frmStandarGrid.FileSaveAs1Accept(Sender: TObject);
+procedure T_frmStandarGFormGrid.FileSaveAs1Accept(Sender: TObject);
 begin
   case FileSaveAs1.Dialog.FilterIndex of
     1: ExportGridToExcel(FileSaveAs1.Dialog.FileName, cxGrid);
@@ -170,17 +158,18 @@ begin
   end;
 end;
 
-procedure T_frmStandarGrid.FormShow(Sender: TObject);
+procedure T_frmStandarGFormGrid.FormShow(Sender: TObject);
 begin
  { TODO -ojhuante : pcMain.ActivePage := tsGrid; }
-  if cxGrid.Visible then
+{  if cxGrid.Visible then
   begin
     cxGrid.SetFocus;
     tvMaster.ViewData.Expand(True);
-  end;
+  end;}
+  tvMaster.ApplyBestFit();
 end;
 
-procedure T_frmStandarGrid.GetContentStyle(pStatus: TcxGridDBColumn;
+procedure T_frmStandarGFormGrid.GetContentStyle(pStatus: TcxGridDBColumn;
   pRecord: TcxCustomGridRecord; pItem: TcxCustomGridTableItem;
   out pStyle: TcxStyle);
 var
@@ -195,7 +184,7 @@ begin
   if vStatus = 'B' then pStyle := cxsDelete;
 end;
 
-procedure T_frmStandarGrid.pcMainChanging(Sender: TObject;
+procedure T_frmStandarGFormGrid.pcMainChanging(Sender: TObject;
   var AllowChange: Boolean);
 begin
   case (Sender as TPageControl).ActivePageIndex of
@@ -226,23 +215,38 @@ begin
   end;
 end;
 
-procedure T_frmStandarGrid.SetDataSet(const Value: TDataSet);
+procedure T_frmStandarGFormGrid.SetCerrarGrid(const Value: TBasicAction);
+begin
+  FCerrarGrid := Value;
+  tbtnCerrar.Action := Value;
+end;
+
+procedure T_frmStandarGFormGrid.SetDataSet(const Value: TDataSet);
 begin
   FDataSet := Value;
   DataSource.DataSet:= Value;
 end;
 
-procedure T_frmStandarGrid.SetReadOnlyGrid(const Value: Boolean);
+procedure T_frmStandarGFormGrid.SetReadOnlyGrid(const Value: Boolean);
 begin
   FReadOnlyGrid := Value;
   DataSetInsert.Visible:= not Value;
   ToolButton2.Visible:= not Value;
   DataSetDelete.Visible:= not Value;
   ToolButton4.Visible:= not Value;
-  tsData.TabVisible:= not Value;
 end;
 
-procedure T_frmStandarGrid.tvMasterStylesGetContentStyle(
+procedure T_frmStandarGFormGrid.SetView(const Value: Boolean);
+begin
+  FView := Value;
+//  btnOk.Visible:= not Value;
+//  if Value then
+//    btnCancel.Caption:= 'Cerrar'
+//  else
+//    btnCancel.Caption:= '&Cancelar'
+end;
+
+procedure T_frmStandarGFormGrid.tvMasterStylesGetContentStyle(
   Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
   AItem: TcxCustomGridTableItem; out AStyle: TcxStyle);
 begin

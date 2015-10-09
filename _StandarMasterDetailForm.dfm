@@ -1,4 +1,4 @@
-object _frmStandarGrid: T_frmStandarGrid
+object _frmStandarMasterDetail: T_frmStandarMasterDetail
   Left = 0
   Top = 0
   BorderStyle = bsNone
@@ -16,20 +16,9 @@ object _frmStandarGrid: T_frmStandarGrid
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object splDetail3: TSplitter
-    Left = 0
-    Top = 323
-    Width = 550
-    Height = 3
-    Cursor = crVSplit
-    Align = alBottom
-    Visible = False
-    ExplicitTop = 288
-    ExplicitWidth = 542
-  end
   object splDetail2: TSplitter
     Left = 0
-    Top = 279
+    Top = 364
     Width = 550
     Height = 3
     Cursor = crVSplit
@@ -40,218 +29,14 @@ object _frmStandarGrid: T_frmStandarGrid
   end
   object splDetail1: TSplitter
     Left = 0
-    Top = 235
+    Top = 201
     Width = 550
     Height = 3
     Cursor = crVSplit
-    Align = alBottom
+    Align = alTop
     Visible = False
     ExplicitTop = 180
     ExplicitWidth = 29
-  end
-  object pcMain: TPageControl
-    Left = 0
-    Top = 0
-    Width = 550
-    Height = 235
-    ActivePage = tsData
-    Align = alClient
-    Images = ilPageControl
-    MultiLine = True
-    TabOrder = 0
-    OnChanging = pcMainChanging
-    object tsGrid: TTabSheet
-      Hint = 'Lista'
-      object pnlMaster: TPanel
-        Left = 0
-        Top = 0
-        Width = 542
-        Height = 206
-        Align = alClient
-        BevelOuter = bvNone
-        TabOrder = 0
-        object tbarGrid: TToolBar
-          Left = 0
-          Top = 0
-          Width = 542
-          Height = 29
-          Images = ilAction
-          TabOrder = 0
-          object ToolButton1: TToolButton
-            Left = 0
-            Top = 0
-            Action = DataSetInsert
-          end
-          object ToolButton2: TToolButton
-            Left = 23
-            Top = 0
-            Width = 8
-            Caption = 'ToolButton2'
-            ImageIndex = 1
-            Style = tbsSeparator
-          end
-          object ToolButton3: TToolButton
-            Left = 31
-            Top = 0
-            Action = DataSetDelete
-          end
-          object ToolButton4: TToolButton
-            Left = 54
-            Top = 0
-            Width = 8
-            Caption = 'ToolButton4'
-            ImageIndex = 2
-            Style = tbsSeparator
-          end
-          object ToolButton5: TToolButton
-            Left = 62
-            Top = 0
-            Action = DataSetFirst
-          end
-          object ToolButton6: TToolButton
-            Left = 85
-            Top = 0
-            Action = DataSetPrior
-          end
-          object ToolButton7: TToolButton
-            Left = 108
-            Top = 0
-            Action = DataSetNext
-          end
-          object ToolButton8: TToolButton
-            Left = 131
-            Top = 0
-            Action = DataSetLast
-          end
-          object ToolButton9: TToolButton
-            Left = 154
-            Top = 0
-            Action = DataSetRefresh
-          end
-          object ToolButton21: TToolButton
-            Left = 177
-            Top = 0
-            Width = 8
-            Caption = 'ToolButton21'
-            ImageIndex = 10
-            Style = tbsSeparator
-          end
-          object ToolButton22: TToolButton
-            Left = 185
-            Top = 0
-            Action = FileSaveAs1
-          end
-        end
-        object cxGrid: TcxGrid
-          Left = 0
-          Top = 29
-          Width = 542
-          Height = 177
-          Align = alClient
-          TabOrder = 1
-          LookAndFeel.Kind = lfStandard
-          object tvMaster: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
-            DataController.DataSource = DataSource
-            DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
-            DataController.Summary.SummaryGroups = <>
-            OptionsCustomize.ColumnFiltering = False
-            OptionsCustomize.ColumnsQuickCustomization = True
-            OptionsData.Deleting = False
-            OptionsData.Editing = False
-            OptionsData.Inserting = False
-            OptionsSelection.CellSelect = False
-            OptionsView.NoDataToDisplayInfoText = ' '
-            OptionsView.GroupByBox = False
-          end
-          object cxGridLevel1: TcxGridLevel
-            GridView = tvMaster
-          end
-        end
-      end
-    end
-    object tsData: TTabSheet
-      Hint = 'Datos'
-      ImageIndex = 1
-      object tbarData: TToolBar
-        Left = 0
-        Top = 0
-        Width = 542
-        Height = 29
-        Images = ilAction
-        TabOrder = 0
-        object ToolButton10: TToolButton
-          Left = 0
-          Top = 0
-          Action = DataSetInsert
-        end
-        object ToolButton11: TToolButton
-          Left = 23
-          Top = 0
-          Width = 8
-          Caption = 'ToolButton11'
-          ImageIndex = 5
-          Style = tbsSeparator
-        end
-        object ToolButton12: TToolButton
-          Left = 31
-          Top = 0
-          Action = DataSetDelete
-        end
-        object ToolButton13: TToolButton
-          Left = 54
-          Top = 0
-          Width = 8
-          Caption = 'ToolButton13'
-          ImageIndex = 8
-          Style = tbsSeparator
-        end
-        object ToolButton14: TToolButton
-          Left = 62
-          Top = 0
-          Action = DataSetFirst
-        end
-        object ToolButton15: TToolButton
-          Left = 85
-          Top = 0
-          Action = DataSetPrior
-        end
-        object ToolButton16: TToolButton
-          Left = 108
-          Top = 0
-          Action = DataSetNext
-        end
-        object ToolButton17: TToolButton
-          Left = 131
-          Top = 0
-          Action = DataSetLast
-        end
-        object ToolButton18: TToolButton
-          Left = 154
-          Top = 0
-          Action = DataSetRefresh
-        end
-        object ToolButton19: TToolButton
-          Left = 177
-          Top = 0
-          Action = DataSetPost
-        end
-        object ToolButton20: TToolButton
-          Left = 200
-          Top = 0
-          Action = DataSetCancel
-        end
-      end
-      object ScrollBox1: TScrollBox
-        Left = 0
-        Top = 29
-        Width = 542
-        Height = 177
-        Align = alClient
-        TabOrder = 1
-      end
-    end
   end
   object pnlClose: TPanel
     Left = 0
@@ -259,48 +44,221 @@ object _frmStandarGrid: T_frmStandarGrid
     Width = 550
     Height = 41
     Align = alBottom
-    TabOrder = 1
+    TabOrder = 0
     Visible = False
   end
-  object pnlDetail3: TPanel
+  object pnlDetail: TPanel
     Left = 0
-    Top = 326
+    Top = 204
     Width = 550
-    Height = 41
-    Align = alBottom
+    Height = 160
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 1
+    object cxGrid: TcxGrid
+      Left = 0
+      Top = 29
+      Width = 550
+      Height = 131
+      Align = alClient
+      TabOrder = 0
+      LookAndFeel.Kind = lfStandard
+      object tvMaster: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        DataController.DataSource = DataSourceDetail
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsCustomize.ColumnFiltering = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.NoDataToDisplayInfoText = ' '
+        OptionsView.GroupByBox = False
+      end
+      object cxGridLevel1: TcxGridLevel
+        GridView = tvMaster
+      end
+    end
+    object tbarGrid: TToolBar
+      Left = 0
+      Top = 0
+      Width = 550
+      Height = 29
+      Images = ilAction
+      TabOrder = 1
+      object ToolButton1: TToolButton
+        Left = 0
+        Top = 0
+        Action = DataSetInsert
+      end
+      object ToolButton2: TToolButton
+        Left = 23
+        Top = 0
+        Width = 8
+        Caption = 'ToolButton2'
+        ImageIndex = 1
+        Style = tbsSeparator
+      end
+      object ToolButton3: TToolButton
+        Left = 31
+        Top = 0
+        Action = DataSetDelete
+      end
+      object ToolButton4: TToolButton
+        Left = 54
+        Top = 0
+        Width = 8
+        Caption = 'ToolButton4'
+        ImageIndex = 2
+        Style = tbsSeparator
+      end
+      object ToolButton5: TToolButton
+        Left = 62
+        Top = 0
+        Action = DataSetFirst
+      end
+      object ToolButton6: TToolButton
+        Left = 85
+        Top = 0
+        Action = DataSetPrior
+      end
+      object ToolButton7: TToolButton
+        Left = 108
+        Top = 0
+        Action = DataSetNext
+      end
+      object ToolButton8: TToolButton
+        Left = 131
+        Top = 0
+        Action = DataSetLast
+      end
+      object ToolButton9: TToolButton
+        Left = 154
+        Top = 0
+        Action = DataSetRefresh
+      end
+      object ToolButton21: TToolButton
+        Left = 177
+        Top = 0
+        Width = 8
+        Caption = 'ToolButton21'
+        ImageIndex = 10
+        Style = tbsSeparator
+      end
+      object ToolButton22: TToolButton
+        Left = 185
+        Top = 0
+        Action = FileSaveAs1
+      end
+    end
+  end
+  object pnlMaster: TPanel
+    Left = 0
+    Top = 6
+    Width = 550
+    Height = 195
+    Align = alTop
     BevelOuter = bvNone
     TabOrder = 2
-    Visible = False
+    object tbarData: TToolBar
+      Left = 0
+      Top = 0
+      Width = 550
+      Height = 29
+      Images = ilAction
+      TabOrder = 0
+      object ToolButton10: TToolButton
+        Left = 0
+        Top = 0
+        Action = DataSetInsert
+      end
+      object ToolButton11: TToolButton
+        Left = 23
+        Top = 0
+        Width = 8
+        Caption = 'ToolButton11'
+        ImageIndex = 5
+        Style = tbsSeparator
+      end
+      object ToolButton12: TToolButton
+        Left = 31
+        Top = 0
+        Action = DataSetDelete
+      end
+      object ToolButton13: TToolButton
+        Left = 54
+        Top = 0
+        Width = 8
+        Caption = 'ToolButton13'
+        ImageIndex = 8
+        Style = tbsSeparator
+      end
+      object ToolButton14: TToolButton
+        Left = 62
+        Top = 0
+        Action = DataSetFirst
+      end
+      object ToolButton15: TToolButton
+        Left = 85
+        Top = 0
+        Action = DataSetPrior
+      end
+      object ToolButton16: TToolButton
+        Left = 108
+        Top = 0
+        Action = DataSetNext
+      end
+      object ToolButton17: TToolButton
+        Left = 131
+        Top = 0
+        Action = DataSetLast
+      end
+      object ToolButton18: TToolButton
+        Left = 154
+        Top = 0
+        Action = DataSetRefresh
+      end
+      object ToolButton19: TToolButton
+        Left = 177
+        Top = 0
+        Action = DataSetPost
+      end
+      object ToolButton20: TToolButton
+        Left = 200
+        Top = 0
+        Action = DataSetCancel
+      end
+    end
+    object ScrollBox1: TScrollBox
+      Left = 0
+      Top = 29
+      Width = 550
+      Height = 166
+      Align = alClient
+      TabOrder = 1
+    end
   end
-  object pnlDetail2: TPanel
+  object pnltoolbar: TPanel
     Left = 0
-    Top = 282
+    Top = 0
     Width = 550
-    Height = 41
-    Align = alBottom
+    Height = 6
+    Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
-    Visible = False
   end
-  object pnlDetail1: TPanel
-    Left = 0
-    Top = 238
-    Width = 550
-    Height = 41
-    Align = alBottom
-    BevelOuter = bvNone
-    TabOrder = 4
-    Visible = False
-  end
-  object DataSource: TDataSource
-    Left = 408
+  object DataSourceMaster: TDataSource
+    Left = 344
     Top = 8
   end
   object ilPageControl: TImageList
     Left = 440
     Top = 8
     Bitmap = {
-      494C010102000400580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020004006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -448,28 +406,28 @@ object _frmStandarGrid: T_frmStandarGrid
       Caption = 'Primero'
       Hint = 'Primero'
       ImageIndex = 0
-      DataSource = DataSource
+      DataSource = DataSourceMaster
     end
     object DataSetPrior: TDataSetPrior
       Category = 'Dataset'
       Caption = 'Anterior'
       Hint = 'Anterior'
       ImageIndex = 1
-      DataSource = DataSource
+      DataSource = DataSourceMaster
     end
     object DataSetNext: TDataSetNext
       Category = 'Dataset'
       Caption = 'Siguiente'
       Hint = 'Siguiente'
       ImageIndex = 2
-      DataSource = DataSource
+      DataSource = DataSourceMaster
     end
     object DataSetLast: TDataSetLast
       Category = 'Dataset'
       Caption = #218'ltimo'
       Hint = #218'ltimo'
       ImageIndex = 3
-      DataSource = DataSource
+      DataSource = DataSourceMaster
     end
     object DataSetInsert: TDataSetInsert
       Category = 'Dataset'
@@ -477,8 +435,7 @@ object _frmStandarGrid: T_frmStandarGrid
       Hint = 'Insertar'
       ImageIndex = 4
       ShortCut = 45
-      OnExecute = DataSetInsertExecute
-      DataSource = DataSource
+      DataSource = DataSourceMaster
     end
     object DataSetDelete: TDataSetDelete
       Category = 'Dataset'
@@ -486,35 +443,35 @@ object _frmStandarGrid: T_frmStandarGrid
       Hint = 'Eliminar'
       ImageIndex = 5
       OnExecute = DataSetDeleteExecute
-      DataSource = DataSource
+      DataSource = DataSourceMaster
     end
     object DataSetEdit: TDataSetEdit
       Category = 'Dataset'
       Caption = '&Editar'
       Hint = 'Editar'
       ImageIndex = 6
-      DataSource = DataSource
+      DataSource = DataSourceMaster
     end
     object DataSetPost: TDataSetPost
       Category = 'Dataset'
       Caption = '&Aceptar'
       Hint = 'Aceptar'
       ImageIndex = 7
-      DataSource = DataSource
+      DataSource = DataSourceMaster
     end
     object DataSetCancel: TDataSetCancel
       Category = 'Dataset'
       Caption = '&Cancelar'
       Hint = 'Cancelar'
       ImageIndex = 8
-      DataSource = DataSource
+      DataSource = DataSourceMaster
     end
     object DataSetRefresh: TDataSetRefresh
       Category = 'Dataset'
       Caption = '&Actualizar'
       Hint = 'Actualizar'
       ImageIndex = 9
-      DataSource = DataSource
+      DataSource = DataSourceMaster
     end
     object FileSaveAs1: TFileSaveAs
       Category = 'File'
@@ -531,7 +488,7 @@ object _frmStandarGrid: T_frmStandarGrid
     Left = 504
     Top = 8
     Bitmap = {
-      494C01010B000E00580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B000E006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -956,9 +913,12 @@ object _frmStandarGrid: T_frmStandarGrid
     end
   end
   object cxGridPopupMenu: TcxGridPopupMenu
-    Grid = cxGrid
     PopupMenus = <>
     Left = 504
     Top = 64
+  end
+  object DataSourceDetail: TDataSource
+    Left = 408
+    Top = 8
   end
 end

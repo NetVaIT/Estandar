@@ -10,7 +10,8 @@ interface
 
 uses
   SysUtils, Classes, Forms, DB, ADODB, Controls, Dialogs, _GridForm, _EditForm,
-  System.Actions, Vcl.ActnList;
+  System.Actions, Vcl.ActnList, _StandarGridForm, _StandarGFormEdit, _StandarGFormGrid,
+  _StandarMasterDetailForm, _StandarMDFormEdit;
 
 type
   T_dmStandar = class(TDataModule)
@@ -33,6 +34,13 @@ type
     gFormDeatil2: T_frmGrid;
     gFormDeatil3: T_frmGrid;
     frmEdit: T_frmEdit;
+    gGridEditForm : T_frmStandarGFormEdit;
+    gFormDetail1 : T_frmStandarGFormEdit;
+    gFormDetail2 : T_frmStandarGFormEdit;
+    gFormDetail3 : T_frmStandarGFormEdit;
+    gGridFormGrid : T_frmStandarGFormGrid;
+    gFormMasterDetail : T_frmStandarMasterDetail;
+    gMasterForm : T_frmStandarMDFormEdit;
     SQLSelect: string;
     SQLWhere: string;
     SQLGroupBy: string;
@@ -193,6 +201,75 @@ begin
     gFormDeatil3.Parent:= gGridForm.pnlDetail3;
     gFormDeatil3.Align:= alClient;
     gFormDeatil3.Show;
+  end;
+  if Assigned(gGridEditForm) then
+  begin
+    OpenDataSet;
+    if Assigned(pConteiner) then
+    begin
+      gGridEditForm.Parent:= pConteiner;
+      gGridEditForm.Align:= alClient;
+      gGridEditForm.Show;
+    end
+    else
+    begin
+      //gGridEditForm.View:= True;
+      gGridEditForm.ShowModal;
+    end;
+  end;
+  if Assigned(gFormDetail1) then
+  begin
+    gGridEditForm.pnlDetail1.Visible := True;
+    gGridEditForm.splDetail1.Visible := True;
+    gFormDetail1.Parent := gGridEditForm.pnlDetail1;
+    gFormDetail1.Align := alClient;
+    gFormDetail1.Show;
+  end;
+  if Assigned(gFormDetail2) then
+  begin
+    gGridEditForm.pnlDetail2.Visible:= True;
+    gGridEditForm.splDetail2.Visible:= True;
+    gFormDetail2.Parent:= gGridEditForm.pnlDetail2;
+    gFormDetail2.Align:= alClient;
+    gFormDetail2.Show;
+  end;
+  if Assigned(gFormDetail3) then
+  begin
+    gGridEditForm.pnlDetail3.Visible:= True;
+    gGridEditForm.splDetail3.Visible:= True;
+    gFormDetail3.Parent:= gGridEditForm.pnlDetail3;
+    gFormDetail3.Align:= alClient;
+    gFormDetail3.Show;
+  end;
+  if Assigned(gFormMasterDetail) then
+  begin
+    OpenDataSet;
+    if Assigned(pConteiner) then
+    begin
+      gFormMasterDetail.Parent:= pConteiner;
+      gFormMasterDetail.Align:= alClient;
+      gFormMasterDetail.Show;
+    end
+    else
+    begin
+      //gGridEditForm.View:= True;
+      gFormMasterDetail.ShowModal;
+    end;
+  end;
+  if Assigned(gMasterForm) then
+  begin
+    OpenDataSet;
+    if Assigned(pConteiner) then
+    begin
+      gMasterForm.Parent:= pConteiner;
+      gMasterForm.Align:= alClient;
+      gMasterForm.Show;
+    end
+    else
+    begin
+      //gGridEditForm.View:= True;
+      gMasterForm.ShowModal;
+    end;
   end;
 end;
 

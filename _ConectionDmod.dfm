@@ -3,12 +3,13 @@ object _dmConection: T_dmConection
   Height = 180
   Width = 227
   object ADOConnection: TADOConnection
+    Connected = True
     ConnectionString = 
-      'Provider=SQLOLEDB.1;Password=as47Pw3K;Persist Security Info=True' +
-      ';User ID=sa;Initial Catalog=IntervaRH;Data Source=NAS1\COMPAC;Us' +
-      'e Procedure for Prepare=1;Auto Translate=True;Packet Size=4096;W' +
-      'orkstation ID=DESARROLLO3;Use Encryption for Data=False;Tag with' +
-      ' column collation when possible=False'
+      'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
+      'fo=False;User ID=sa;Initial Catalog=MAS;Data Source=DESARROLLO04' +
+      '\SQLEXPRESS;Use Procedure for Prepare=1;Auto Translate=True;Pack' +
+      'et Size=4096;Workstation ID=DESARROLLO3;Use Encryption for Data=' +
+      'False;Tag with column collation when possible=False'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     OnDisconnect = ADOConnectionDisconnect

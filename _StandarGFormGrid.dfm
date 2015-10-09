@@ -1,10 +1,10 @@
-object _frmStandarGrid: T_frmStandarGrid
+object _frmStandarGFormGrid: T_frmStandarGFormGrid
   Left = 0
   Top = 0
   BorderStyle = bsNone
   Caption = '_FrmStandar'
-  ClientHeight = 408
-  ClientWidth = 550
+  ClientHeight = 650
+  ClientWidth = 750
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,14 +12,15 @@ object _frmStandarGrid: T_frmStandarGrid
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   ShowHint = True
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object splDetail3: TSplitter
     Left = 0
-    Top = 323
-    Width = 550
+    Top = 565
+    Width = 750
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -29,8 +30,8 @@ object _frmStandarGrid: T_frmStandarGrid
   end
   object splDetail2: TSplitter
     Left = 0
-    Top = 279
-    Width = 550
+    Top = 521
+    Width = 750
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -40,8 +41,8 @@ object _frmStandarGrid: T_frmStandarGrid
   end
   object splDetail1: TSplitter
     Left = 0
-    Top = 235
-    Width = 550
+    Top = 477
+    Width = 750
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -49,258 +50,189 @@ object _frmStandarGrid: T_frmStandarGrid
     ExplicitTop = 180
     ExplicitWidth = 29
   end
-  object pcMain: TPageControl
-    Left = 0
-    Top = 0
-    Width = 550
-    Height = 235
-    ActivePage = tsData
-    Align = alClient
-    Images = ilPageControl
-    MultiLine = True
-    TabOrder = 0
-    OnChanging = pcMainChanging
-    object tsGrid: TTabSheet
-      Hint = 'Lista'
-      object pnlMaster: TPanel
-        Left = 0
-        Top = 0
-        Width = 542
-        Height = 206
-        Align = alClient
-        BevelOuter = bvNone
-        TabOrder = 0
-        object tbarGrid: TToolBar
-          Left = 0
-          Top = 0
-          Width = 542
-          Height = 29
-          Images = ilAction
-          TabOrder = 0
-          object ToolButton1: TToolButton
-            Left = 0
-            Top = 0
-            Action = DataSetInsert
-          end
-          object ToolButton2: TToolButton
-            Left = 23
-            Top = 0
-            Width = 8
-            Caption = 'ToolButton2'
-            ImageIndex = 1
-            Style = tbsSeparator
-          end
-          object ToolButton3: TToolButton
-            Left = 31
-            Top = 0
-            Action = DataSetDelete
-          end
-          object ToolButton4: TToolButton
-            Left = 54
-            Top = 0
-            Width = 8
-            Caption = 'ToolButton4'
-            ImageIndex = 2
-            Style = tbsSeparator
-          end
-          object ToolButton5: TToolButton
-            Left = 62
-            Top = 0
-            Action = DataSetFirst
-          end
-          object ToolButton6: TToolButton
-            Left = 85
-            Top = 0
-            Action = DataSetPrior
-          end
-          object ToolButton7: TToolButton
-            Left = 108
-            Top = 0
-            Action = DataSetNext
-          end
-          object ToolButton8: TToolButton
-            Left = 131
-            Top = 0
-            Action = DataSetLast
-          end
-          object ToolButton9: TToolButton
-            Left = 154
-            Top = 0
-            Action = DataSetRefresh
-          end
-          object ToolButton21: TToolButton
-            Left = 177
-            Top = 0
-            Width = 8
-            Caption = 'ToolButton21'
-            ImageIndex = 10
-            Style = tbsSeparator
-          end
-          object ToolButton22: TToolButton
-            Left = 185
-            Top = 0
-            Action = FileSaveAs1
-          end
-        end
-        object cxGrid: TcxGrid
-          Left = 0
-          Top = 29
-          Width = 542
-          Height = 177
-          Align = alClient
-          TabOrder = 1
-          LookAndFeel.Kind = lfStandard
-          object tvMaster: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
-            DataController.DataSource = DataSource
-            DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
-            DataController.Summary.SummaryGroups = <>
-            OptionsCustomize.ColumnFiltering = False
-            OptionsCustomize.ColumnsQuickCustomization = True
-            OptionsData.Deleting = False
-            OptionsData.Editing = False
-            OptionsData.Inserting = False
-            OptionsSelection.CellSelect = False
-            OptionsView.NoDataToDisplayInfoText = ' '
-            OptionsView.GroupByBox = False
-          end
-          object cxGridLevel1: TcxGridLevel
-            GridView = tvMaster
-          end
-        end
-      end
-    end
-    object tsData: TTabSheet
-      Hint = 'Datos'
-      ImageIndex = 1
-      object tbarData: TToolBar
-        Left = 0
-        Top = 0
-        Width = 542
-        Height = 29
-        Images = ilAction
-        TabOrder = 0
-        object ToolButton10: TToolButton
-          Left = 0
-          Top = 0
-          Action = DataSetInsert
-        end
-        object ToolButton11: TToolButton
-          Left = 23
-          Top = 0
-          Width = 8
-          Caption = 'ToolButton11'
-          ImageIndex = 5
-          Style = tbsSeparator
-        end
-        object ToolButton12: TToolButton
-          Left = 31
-          Top = 0
-          Action = DataSetDelete
-        end
-        object ToolButton13: TToolButton
-          Left = 54
-          Top = 0
-          Width = 8
-          Caption = 'ToolButton13'
-          ImageIndex = 8
-          Style = tbsSeparator
-        end
-        object ToolButton14: TToolButton
-          Left = 62
-          Top = 0
-          Action = DataSetFirst
-        end
-        object ToolButton15: TToolButton
-          Left = 85
-          Top = 0
-          Action = DataSetPrior
-        end
-        object ToolButton16: TToolButton
-          Left = 108
-          Top = 0
-          Action = DataSetNext
-        end
-        object ToolButton17: TToolButton
-          Left = 131
-          Top = 0
-          Action = DataSetLast
-        end
-        object ToolButton18: TToolButton
-          Left = 154
-          Top = 0
-          Action = DataSetRefresh
-        end
-        object ToolButton19: TToolButton
-          Left = 177
-          Top = 0
-          Action = DataSetPost
-        end
-        object ToolButton20: TToolButton
-          Left = 200
-          Top = 0
-          Action = DataSetCancel
-        end
-      end
-      object ScrollBox1: TScrollBox
-        Left = 0
-        Top = 29
-        Width = 542
-        Height = 177
-        Align = alClient
-        TabOrder = 1
-      end
-    end
-  end
   object pnlClose: TPanel
     Left = 0
-    Top = 367
-    Width = 550
+    Top = 609
+    Width = 750
     Height = 41
     Align = alBottom
-    TabOrder = 1
+    TabOrder = 0
     Visible = False
   end
   object pnlDetail3: TPanel
     Left = 0
-    Top = 326
-    Width = 550
+    Top = 568
+    Width = 750
+    Height = 41
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 1
+    Visible = False
+  end
+  object pnlDetail2: TPanel
+    Left = 0
+    Top = 524
+    Width = 750
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
     Visible = False
   end
-  object pnlDetail2: TPanel
+  object pnlDetail1: TPanel
     Left = 0
-    Top = 282
-    Width = 550
+    Top = 480
+    Width = 750
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 3
     Visible = False
   end
-  object pnlDetail1: TPanel
+  object pnltoolbar: TPanel
     Left = 0
-    Top = 238
-    Width = 550
-    Height = 41
-    Align = alBottom
+    Top = 0
+    Width = 750
+    Height = 6
+    Align = alTop
     BevelOuter = bvNone
     TabOrder = 4
-    Visible = False
+  end
+  object tbarGrid: TToolBar
+    Left = 0
+    Top = 6
+    Width = 750
+    Height = 29
+    Images = ilAction
+    TabOrder = 5
+    object ToolButton1: TToolButton
+      Left = 0
+      Top = 0
+      Action = DataSetInsert
+      Visible = False
+    end
+    object ToolButton2: TToolButton
+      Left = 23
+      Top = 0
+      Width = 8
+      Caption = 'ToolButton2'
+      ImageIndex = 1
+      Style = tbsSeparator
+      Visible = False
+    end
+    object ToolButton3: TToolButton
+      Left = 31
+      Top = 0
+      Action = DataSetDelete
+      Visible = False
+    end
+    object ToolButton4: TToolButton
+      Left = 54
+      Top = 0
+      Width = 8
+      Caption = 'ToolButton4'
+      ImageIndex = 2
+      Style = tbsSeparator
+      Visible = False
+    end
+    object ToolButton5: TToolButton
+      Left = 62
+      Top = 0
+      Action = DataSetFirst
+    end
+    object ToolButton6: TToolButton
+      Left = 85
+      Top = 0
+      Action = DataSetPrior
+    end
+    object ToolButton7: TToolButton
+      Left = 108
+      Top = 0
+      Action = DataSetNext
+    end
+    object ToolButton8: TToolButton
+      Left = 131
+      Top = 0
+      Action = DataSetLast
+    end
+    object ToolButton9: TToolButton
+      Left = 154
+      Top = 0
+      Action = DataSetRefresh
+    end
+    object ToolButton21: TToolButton
+      Left = 177
+      Top = 0
+      Width = 8
+      Caption = 'ToolButton21'
+      ImageIndex = 10
+      Style = tbsSeparator
+    end
+    object ToolButton22: TToolButton
+      Left = 185
+      Top = 0
+      Action = FileSaveAs1
+    end
+    object ToolButton10: TToolButton
+      Left = 208
+      Top = 0
+      Width = 8
+      Caption = 'ToolButton10'
+      ImageIndex = 11
+      Style = tbsSeparator
+    end
+    object tbtnCerrar: TToolButton
+      Left = 216
+      Top = 0
+      Caption = 'tbtnCerrar'
+      ImageIndex = 11
+    end
+  end
+  object pnlMaster: TPanel
+    Left = 0
+    Top = 35
+    Width = 750
+    Height = 442
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 6
+    object cxGrid: TcxGrid
+      Left = 0
+      Top = 0
+      Width = 750
+      Height = 442
+      Align = alClient
+      TabOrder = 0
+      LookAndFeel.Kind = lfStandard
+      object tvMaster: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        DataController.DataSource = DataSource
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsCustomize.ColumnFiltering = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.NoDataToDisplayInfoText = ' '
+        OptionsView.GroupByBox = False
+      end
+      object cxGridLevel1: TcxGridLevel
+        GridView = tvMaster
+      end
+    end
   end
   object DataSource: TDataSource
-    Left = 408
+    Left = 552
     Top = 8
   end
   object ilPageControl: TImageList
-    Left = 440
+    Left = 584
     Top = 8
     Bitmap = {
-      494C010102000400580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000400B40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -441,7 +373,7 @@ object _frmStandarGrid: T_frmStandarGrid
   end
   object ActionList: TActionList
     Images = ilAction
-    Left = 472
+    Left = 616
     Top = 8
     object DataSetFirst: TDataSetFirst
       Category = 'Dataset'
@@ -528,10 +460,10 @@ object _frmStandarGrid: T_frmStandarGrid
     end
   end
   object ilAction: TImageList
-    Left = 504
+    Left = 648
     Top = 8
     Bitmap = {
-      494C01010B000E00580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B000E00CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -935,7 +867,7 @@ object _frmStandarGrid: T_frmStandarGrid
       000000000000}
   end
   object cxStyleRepository1: TcxStyleRepository
-    Left = 376
+    Left = 520
     Top = 8
     PixelsPerInch = 96
     object cxsEven: TcxStyle
@@ -956,9 +888,8 @@ object _frmStandarGrid: T_frmStandarGrid
     end
   end
   object cxGridPopupMenu: TcxGridPopupMenu
-    Grid = cxGrid
     PopupMenus = <>
-    Left = 504
-    Top = 64
+    Left = 680
+    Top = 8
   end
 end

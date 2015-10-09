@@ -4,7 +4,7 @@
  Copyright (C) 2008-2015 - Jesus Huante Caballero
 
  ******************************************************************************)
-unit _StandarGridForm;
+unit _StandarMDFormEdit;
 
 interface
 
@@ -28,96 +28,50 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator,
-  System.Actions;
+  System.Actions, cxPCdxBarPopupMenu, cxPC, _StandarGFormEdit, _StandarGFormGrid;
 
 type
-  T_frmStandarGrid = class(TForm)
+  T_frmStandarMDFormEdit = class(TForm)
     DataSource: TDataSource;
-    pcMain: TPageControl;
-    tsGrid: TTabSheet;
-    tsData: TTabSheet;
     ilPageControl: TImageList;
     ActionList: TActionList;
     ilAction: TImageList;
-    DataSetFirst: TDataSetFirst;
-    DataSetPrior: TDataSetPrior;
-    DataSetNext: TDataSetNext;
-    DataSetLast: TDataSetLast;
-    DataSetInsert: TDataSetInsert;
-    DataSetDelete: TDataSetDelete;
-    DataSetEdit: TDataSetEdit;
-    DataSetPost: TDataSetPost;
-    DataSetCancel: TDataSetCancel;
-    DataSetRefresh: TDataSetRefresh;
-    tbarData: TToolBar;
-    ScrollBox1: TScrollBox;
-    ToolButton10: TToolButton;
-    ToolButton11: TToolButton;
-    ToolButton12: TToolButton;
-    ToolButton13: TToolButton;
-    ToolButton14: TToolButton;
-    ToolButton15: TToolButton;
-    ToolButton16: TToolButton;
-    ToolButton17: TToolButton;
-    ToolButton18: TToolButton;
-    ToolButton19: TToolButton;
-    ToolButton20: TToolButton;
     cxStyleRepository1: TcxStyleRepository;
     cxsEven: TcxStyle;
     cxsOdd: TcxStyle;
-    FileSaveAs1: TFileSaveAs;
-    cxGridPopupMenu: TcxGridPopupMenu;
     cxsInactive: TcxStyle;
     cxsDelete: TcxStyle;
     cxsActive: TcxStyle;
     pnlMaster: TPanel;
-    tbarGrid: TToolBar;
-    ToolButton1: TToolButton;
-    ToolButton2: TToolButton;
+    tbarCategorias: TToolBar;
     ToolButton3: TToolButton;
-    ToolButton4: TToolButton;
-    ToolButton5: TToolButton;
-    ToolButton6: TToolButton;
-    ToolButton7: TToolButton;
-    ToolButton8: TToolButton;
-    ToolButton9: TToolButton;
-    ToolButton21: TToolButton;
-    ToolButton22: TToolButton;
-    cxGrid: TcxGrid;
-    tvMaster: TcxGridDBTableView;
-    cxGridLevel1: TcxGridLevel;
-    pnlClose: TPanel;
-    pnlDetail3: TPanel;
-    splDetail3: TSplitter;
-    pnlDetail2: TPanel;
-    splDetail2: TSplitter;
-    pnlDetail1: TPanel;
-    splDetail1: TSplitter;
     procedure DataSetInsertExecute(Sender: TObject);
     procedure pcMainChanging(Sender: TObject; var AllowChange: Boolean);
-    procedure FormShow(Sender: TObject);
 //    procedure DBGridDrawColumnCell(Sender: TObject; const Rect: TRect;
 //      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DataSetDeleteExecute(Sender: TObject);
-    procedure FileSaveAs1Accept(Sender: TObject);
     procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
       ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
       out AStyle: TcxStyle);
+    procedure actShowGridExecute(Sender: TObject);
   private
     { Private declarations }
     FReadOnlyGrid: Boolean;
     FDataSet: TDataSet;
-    procedure SetReadOnlyGrid(const Value: Boolean);
+    FgEditForm : T_frmStandarGFormEdit;
+    FgGridForm : T_frmStandarGFormGrid;
     procedure SetDataSet(const Value: TDataSet);
   protected
     tvStatus: TcxGridDBColumn;
-    property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
+    gGridEditForm : T_frmStandarGFormEdit;
+    property gFormGrid : T_frmStandarGFormGrid read FgGridForm write FgGridForm;
   public
     { Public declarations }
     property DataSet: TDataSet read FDataSet write SetDataSet;
     procedure GetContentStyle(pStatus: TcxGridDBColumn;
       pRecord: TcxCustomGridRecord; pItem: TcxCustomGridTableItem;
       out pStyle: TcxStyle);
+    procedure ShowModule(pConteiner: TWinControl; pCation: TCaption);
   end;
 
 implementation
@@ -126,61 +80,27 @@ implementation
 
 uses _MainRibbonForm;
 
-procedure T_frmStandarGrid.DataSetDeleteExecute(Sender: TObject);
+procedure T_frmStandarMDFormEdit.actShowGridExecute(Sender: TObject);
+begin
+  if Assigned(FgGridForm) then
+  begin
+    FgGridForm.View := True;
+    FgGridForm.ShowModal;
+  end;
+end;
+
+procedure T_frmStandarMDFormEdit.DataSetDeleteExecute(Sender: TObject);
 begin
   if MessageDlg(strAllowDelete, mtConfirmation, mbYesNo, 0) = mrYes
   then DataSource.DataSet.Delete;
 end;
 
-procedure T_frmStandarGrid.DataSetInsertExecute(Sender: TObject);
+procedure T_frmStandarMDFormEdit.DataSetInsertExecute(Sender: TObject);
 begin
-  if tsData.TabVisible then
-  begin
-    if pcMain.ActivePage = tsGrid then
-      pcMain.ActivePage := tsData;
-    DataSource.DataSet.Insert;
-  end;
+  DataSource.DataSet.Insert;
 end;
 
-//procedure T_StandarFrm.DBGridDrawColumnCell(Sender: TObject; const Rect: TRect;
-//  DataCol: Integer; Column: TColumn; State: TGridDrawState);
-//const
-//  clPaleGreen = TColor($CCFFCC);
-//  clPaleRed =   TColor($CCCCFF);
-//begin
-//  with (Sender as TDBGrid) do
-//  begin
-// { TODO -ojhuante : Definicion de colores en grid }
-//    if (DataSource.DataSet.RecNo mod 2) = 0
-//      then Canvas.Brush.Color := clMoneyGreen;
-////      else Canvas.Brush.Color := clMoneyGreen;
-//    if (gdSelected in State) then Canvas.Brush.Color := clHighlight;
-//    DefaultDrawColumnCell(Rect, DataCol, Column, State);
-//  end;
-//  DBGrid.SelectedRows.CurrentRowSelected
-//end;
-
-procedure T_frmStandarGrid.FileSaveAs1Accept(Sender: TObject);
-begin
-  case FileSaveAs1.Dialog.FilterIndex of
-    1: ExportGridToExcel(FileSaveAs1.Dialog.FileName, cxGrid);
-    2: ExportGridToHTML(FileSaveAs1.Dialog.FileName, cxGrid);
-    3: ExportGridToText(FileSaveAs1.Dialog.FileName, cxGrid);
-    4: ExportGridToXML(FileSaveAs1.Dialog.FileName, cxGrid);
-  end;
-end;
-
-procedure T_frmStandarGrid.FormShow(Sender: TObject);
-begin
- { TODO -ojhuante : pcMain.ActivePage := tsGrid; }
-  if cxGrid.Visible then
-  begin
-    cxGrid.SetFocus;
-    tvMaster.ViewData.Expand(True);
-  end;
-end;
-
-procedure T_frmStandarGrid.GetContentStyle(pStatus: TcxGridDBColumn;
+procedure T_frmStandarMDFormEdit.GetContentStyle(pStatus: TcxGridDBColumn;
   pRecord: TcxCustomGridRecord; pItem: TcxCustomGridTableItem;
   out pStyle: TcxStyle);
 var
@@ -195,7 +115,7 @@ begin
   if vStatus = 'B' then pStyle := cxsDelete;
 end;
 
-procedure T_frmStandarGrid.pcMainChanging(Sender: TObject;
+procedure T_frmStandarMDFormEdit.pcMainChanging(Sender: TObject;
   var AllowChange: Boolean);
 begin
   case (Sender as TPageControl).ActivePageIndex of
@@ -226,23 +146,32 @@ begin
   end;
 end;
 
-procedure T_frmStandarGrid.SetDataSet(const Value: TDataSet);
+procedure T_frmStandarMDFormEdit.SetDataSet(const Value: TDataSet);
 begin
   FDataSet := Value;
   DataSource.DataSet:= Value;
 end;
 
-procedure T_frmStandarGrid.SetReadOnlyGrid(const Value: Boolean);
+procedure T_frmStandarMDFormEdit.ShowModule(pConteiner: TWinControl;
+  pCation: TCaption);
 begin
-  FReadOnlyGrid := Value;
-  DataSetInsert.Visible:= not Value;
-  ToolButton2.Visible:= not Value;
-  DataSetDelete.Visible:= not Value;
-  ToolButton4.Visible:= not Value;
-  tsData.TabVisible:= not Value;
+  if Assigned(gGridEditForm) then
+  begin
+    if Assigned(pConteiner) then
+    begin
+      gGridEditForm.Parent:= pConteiner;
+      gGridEditForm.Align:= alClient;
+      gGridEditForm.Show;
+    end
+    else
+    begin
+      //gGridEditForm.View:= True;
+      gGridEditForm.ShowModal;
+    end;
+  end;
 end;
 
-procedure T_frmStandarGrid.tvMasterStylesGetContentStyle(
+procedure T_frmStandarMDFormEdit.tvMasterStylesGetContentStyle(
   Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
   AItem: TcxCustomGridTableItem; out AStyle: TcxStyle);
 begin
