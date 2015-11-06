@@ -26,8 +26,13 @@ type
     { Private declarations }
     FMasterFields: string;
     FMasterSource: TDataSource;
+    FMasterFieldName: String;
     procedure SetMasterFields(const Value: string);
     procedure SetMasterSource(const Value: TDataSource);
+    function GetNombre: string;
+    procedure SetMasterFieldName(const Value: String);
+
+
   protected
     gGridForm: T_frmGrid;
     gFormDeatil1: T_frmGrid;
@@ -46,6 +51,7 @@ type
     SQLGroupBy: string;
     SQLOrderBy: string;
     procedure SetFilter; virtual;
+
   public
     { Public declarations }
     procedure OpenDataSet; virtual;
@@ -56,6 +62,9 @@ type
     procedure View(Id: Integer);
     property MasterSource: TDataSource read FMasterSource write SetMasterSource;
     property MasterFields: string read FMasterFields write SetMasterFields;
+    property Nombre: string read GetNombre;
+    property MasterFieldName: String read FMasterFieldName write SetMasterFieldName;
+
   end;
 
 implementation
@@ -115,6 +124,12 @@ begin
   end;
 end;
 
+function T_dmStandar.GetNombre: string;
+begin
+  if Assigned(MasterSource) then
+    Result:= MasterSource.DataSet.FindField(FMasterFieldName).AsString;
+end;
+
 procedure T_dmStandar.OpenDataSet;
 
   procedure PrepareDataSet;
@@ -131,6 +146,11 @@ end;
 procedure T_dmStandar.SetFilter;
 begin
   SQLWhere:= '1=0';
+end;
+
+procedure T_dmStandar.SetMasterFieldName(const Value: String);
+begin
+  FMasterFieldName := Value;
 end;
 
 procedure T_dmStandar.SetMasterFields(const Value: string);
