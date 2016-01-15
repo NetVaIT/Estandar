@@ -217,29 +217,29 @@ begin
     end;
     OpenDataSet;
   end;
-  if Assigned(gFormDetail1) then
+  if Assigned(gFormDetail3) then
   begin
-    gGridEditForm.pnlDetail1.Visible := True;
-    gGridEditForm.splDetail1.Visible := True;
-    gFormDetail1.Parent := gGridEditForm.pnlDetail1;
-    gFormDetail1.Align := alClient;
-    gFormDetail1.Show;
+    gGridEditForm.ContainerDetail3.Visible:= True;
+    gGridEditForm.splDetail3.Visible:= True;
+    gFormDetail3.Parent:= gGridEditForm.ContainerDetail3;
+    gFormDetail3.Align:= alClient;
+    gFormDetail3.Show;
   end;
   if Assigned(gFormDetail2) then
   begin
-    gGridEditForm.pnlDetail2.Visible:= True;
+    gGridEditForm.ContainerDetail2.Visible:= True;
     gGridEditForm.splDetail2.Visible:= True;
-    gFormDetail2.Parent:= gGridEditForm.pnlDetail2;
+    gFormDetail2.Parent:= gGridEditForm.ContainerDetail2;
     gFormDetail2.Align:= alClient;
     gFormDetail2.Show;
   end;
-  if Assigned(gFormDetail3) then
+  if Assigned(gFormDetail1) then
   begin
-    gGridEditForm.pnlDetail3.Visible:= True;
-    gGridEditForm.splDetail3.Visible:= True;
-    gFormDetail3.Parent:= gGridEditForm.pnlDetail3;
-    gFormDetail3.Align:= alClient;
-    gFormDetail3.Show;
+    gGridEditForm.ContainerDetail1.Visible := True;
+    gGridEditForm.splDetail1.Visible := True;
+    gFormDetail1.Parent := gGridEditForm.ContainerDetail1;
+    gFormDetail1.Align := alClient;
+    gFormDetail1.Show;
   end;
   if Assigned(gFormMasterDetail) then
   begin

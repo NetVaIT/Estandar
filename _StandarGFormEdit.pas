@@ -89,16 +89,23 @@ type
     procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
       ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
       out AStyle: TcxStyle);
-    procedure FormResize(Sender: TObject);
     procedure actShowGridExecute(Sender: TObject);
     procedure actCloseGridExecute(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     FReadOnlyGrid: Boolean;
     FDataSet: TDataSet;
     FgGridForm : T_frmStandarGFormGrid;
+    FContainerDetail2: TCustomControl;
+    FContainerDetail3: TCustomControl;
+    FContainerDetail1: TCustomControl;
     procedure SetReadOnlyGrid(const Value: Boolean);
     procedure SetDataSet(const Value: TDataSet);
+    procedure SetContainerDetail1(const Value: TCustomControl);
+    procedure SetContainerDetail2(const Value: TCustomControl);
+    procedure SetContainerDetail3(const Value: TCustomControl);
   protected
     tvStatus: TcxGridDBColumn;
     property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
@@ -106,6 +113,9 @@ type
   public
     { Public declarations }
     property DataSet: TDataSet read FDataSet write SetDataSet;
+    property ContainerDetail1: TCustomControl read FContainerDetail1 write SetContainerDetail1;
+    property ContainerDetail2: TCustomControl read FContainerDetail2 write SetContainerDetail2;
+    property ContainerDetail3: TCustomControl read FContainerDetail3 write SetContainerDetail3;
     procedure GetContentStyle(pStatus: TcxGridDBColumn;
       pRecord: TcxCustomGridRecord; pItem: TcxCustomGridTableItem;
       out pStyle: TcxStyle);
@@ -119,18 +129,18 @@ uses _MainRibbonForm;
 
 procedure T_frmStandarGFormEdit.actCloseGridExecute(Sender: TObject);
 begin
-  FgGridForm.Hide;
-  cxScrollBox1.Visible := True;
+//  FgGridForm.Close;
+//  cxScrollBox1.Visible := True;
 end;
 
 procedure T_frmStandarGFormEdit.actShowGridExecute(Sender: TObject);
 begin
-  if Assigned(FgGridForm) then
+  if Assigned(gFormGrid) then
   begin
-    cxScrollBox1.Visible := False;
-    FgGridForm.Parent := tsGeneral;
-    FgGridForm.Align := alClient;
-    FgGridForm.Show;
+//    cxScrollBox1.Visible := False;
+    gFormGrid.Parent := tsGeneral;
+    gFormGrid.Align := alClient;
+    gFormGrid.Show;
 //    FgGridForm.View := True;
 //    FgGridForm.ShowModal;
   end;
@@ -147,9 +157,17 @@ begin
   DataSource.DataSet.Insert;
 end;
 
-procedure T_frmStandarGFormEdit.FormResize(Sender: TObject);
+procedure T_frmStandarGFormEdit.FormCreate(Sender: TObject);
 begin
+  ContainerDetail1:= pnlDetail1;
+  ContainerDetail2:= pnlDetail2;
+  ContainerDetail3:= pnlDetail3;
+end;
 
+procedure T_frmStandarGFormEdit.FormShow(Sender: TObject);
+begin
+  if Assigned(gFormGrid) then
+    gFormGrid.DataSet:= DataSet;
 end;
 
 //procedure T_StandarFrm.DBGridDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -214,6 +232,24 @@ begin
 
     end;
   end;
+end;
+
+procedure T_frmStandarGFormEdit.SetContainerDetail1(
+  const Value: TCustomControl);
+begin
+  FContainerDetail1 := Value;
+end;
+
+procedure T_frmStandarGFormEdit.SetContainerDetail2(
+  const Value: TCustomControl);
+begin
+  FContainerDetail2 := Value;
+end;
+
+procedure T_frmStandarGFormEdit.SetContainerDetail3(
+  const Value: TCustomControl);
+begin
+  FContainerDetail3 := Value;
 end;
 
 procedure T_frmStandarGFormEdit.SetDataSet(const Value: TDataSet);

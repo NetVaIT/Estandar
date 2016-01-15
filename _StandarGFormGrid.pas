@@ -28,7 +28,7 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator,
-  System.Actions;
+  System.Actions, Winapi.ShellAPI;
 
 type
   T_frmStandarGFormGrid = class(TForm)
@@ -80,7 +80,7 @@ type
     cxGridLevel1: TcxGridLevel;
     ToolButton10: TToolButton;
     tbtnCerrar: TToolButton;
-    procedure DataSetInsertExecute(Sender: TObject);
+    actCloseGrid: TAction;
     procedure pcMainChanging(Sender: TObject; var AllowChange: Boolean);
     procedure FormShow(Sender: TObject);
 //    procedure DBGridDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -90,6 +90,7 @@ type
     procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
       ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
       out AStyle: TcxStyle);
+    procedure actCloseGridExecute(Sender: TObject);
   private
     { Private declarations }
     FReadOnlyGrid: Boolean;
@@ -119,15 +120,15 @@ implementation
 
 uses _MainRibbonForm;
 
+procedure T_frmStandarGFormGrid.actCloseGridExecute(Sender: TObject);
+begin
+  Close;
+end;
+
 procedure T_frmStandarGFormGrid.DataSetDeleteExecute(Sender: TObject);
 begin
   if MessageDlg(strAllowDelete, mtConfirmation, mbYesNo, 0) = mrYes
   then DataSource.DataSet.Delete;
-end;
-
-procedure T_frmStandarGFormGrid.DataSetInsertExecute(Sender: TObject);
-begin
-
 end;
 
 //procedure T_StandarFrm.DBGridDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -149,13 +150,19 @@ end;
 //end;
 
 procedure T_frmStandarGFormGrid.FileSaveAs1Accept(Sender: TObject);
+var
+  FileName: TFileName;
 begin
+  FileName := FileSaveAs1.Dialog.FileName;
   case FileSaveAs1.Dialog.FilterIndex of
-    1: ExportGridToExcel(FileSaveAs1.Dialog.FileName, cxGrid);
-    2: ExportGridToHTML(FileSaveAs1.Dialog.FileName, cxGrid);
-    3: ExportGridToText(FileSaveAs1.Dialog.FileName, cxGrid);
-    4: ExportGridToXML(FileSaveAs1.Dialog.FileName, cxGrid);
+    1: ExportGridToExcel(FileName, cxGrid);
+    2: ExportGridToXLSX(FileName, cxGrid);
+    3: ExportGridToHTML(FileName, cxGrid);
+    4: ExportGridToText(FileName, cxGrid);
+    5: ExportGridToXML(FileName, cxGrid);
   end;
+  if MessageDlg(strOpenFile, mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    ShellExecute(Handle, 'open', PChar(FileName), nil, nil, 0);
 end;
 
 procedure T_frmStandarGFormGrid.FormShow(Sender: TObject);
