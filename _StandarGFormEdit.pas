@@ -101,11 +101,13 @@ type
     FContainerDetail2: TCustomControl;
     FContainerDetail3: TCustomControl;
     FContainerDetail1: TCustomControl;
+    FContainerDetail4: TCustomControl;
     procedure SetReadOnlyGrid(const Value: Boolean);
     procedure SetDataSet(const Value: TDataSet);
     procedure SetContainerDetail1(const Value: TCustomControl);
     procedure SetContainerDetail2(const Value: TCustomControl);
     procedure SetContainerDetail3(const Value: TCustomControl);
+    procedure SetContainerDetail4(const Value: TCustomControl);
   protected
     tvStatus: TcxGridDBColumn;
     property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
@@ -116,6 +118,7 @@ type
     property ContainerDetail1: TCustomControl read FContainerDetail1 write SetContainerDetail1;
     property ContainerDetail2: TCustomControl read FContainerDetail2 write SetContainerDetail2;
     property ContainerDetail3: TCustomControl read FContainerDetail3 write SetContainerDetail3;
+    property ContainerDetail4: TCustomControl read FContainerDetail4 write SetContainerDetail4;
     procedure GetContentStyle(pStatus: TcxGridDBColumn;
       pRecord: TcxCustomGridRecord; pItem: TcxCustomGridTableItem;
       out pStyle: TcxStyle);
@@ -162,6 +165,7 @@ begin
   ContainerDetail1:= pnlDetail1;
   ContainerDetail2:= pnlDetail2;
   ContainerDetail3:= pnlDetail3;
+  ContainerDetail4:= nil;
 end;
 
 procedure T_frmStandarGFormEdit.FormShow(Sender: TObject);
@@ -250,6 +254,12 @@ procedure T_frmStandarGFormEdit.SetContainerDetail3(
   const Value: TCustomControl);
 begin
   FContainerDetail3 := Value;
+end;
+
+procedure T_frmStandarGFormEdit.SetContainerDetail4(
+  const Value: TCustomControl);
+begin
+  FContainerDetail4 := Value;
 end;
 
 procedure T_frmStandarGFormEdit.SetDataSet(const Value: TDataSet);
