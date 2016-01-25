@@ -126,12 +126,20 @@ procedure T_dmStandar.OpenDataSet;
   end;
 begin
   PrepareDataSet;
-  if adodsMaster.CommandText <> EmptyStr then adodsMaster.Open;
+  if adodsMaster.CommandText <> EmptyStr then
+  begin
+    ScreenCursorProc(crSQLWait);
+    try
+      adodsMaster.Open;
+    finally
+      ScreenCursorProc(crDefault);
+    end;
+  end;
 end;
 
 procedure T_dmStandar.SetFilter;
 begin
-  SQLWhere:= '1=0';
+  SQLWhere:= 'WHERE 1=0';
 end;
 
 procedure T_dmStandar.SetMasterFields(const Value: string);

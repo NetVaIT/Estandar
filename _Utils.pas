@@ -9,7 +9,8 @@ unit _Utils;
 interface
 
 uses Windows, SysUtils, Classes, Controls, Forms, StdCtrls, Registry,
-  IdWinSock2, ShellAPI, DB, ADODB;
+  IdWinSock2, ShellAPI, DB, ADODB,
+  IdHashMessageDigest, idHash;
 
 type
   TLangAndCP = record
@@ -78,6 +79,7 @@ function GetTotalRecords(FileName: TFileName; RecorSize: Double): Integer;
 procedure ExecuteUntilFinish(ExecuteFile : string);
 function EjecutarYEsperar( sPrograma: String; Visibilidad: Integer ): Integer;
 function xIntToLletras(Numero:LongInt):String;
+function MD5File(const FileName: string): string;
 
 implementation
 
@@ -408,6 +410,21 @@ begin
    if Unidades >0 then Linea := Linea + xxIntToLletras(Unidades);
 
    xIntToLletras := Linea;
+end;
+
+function MD5File(const FileName: string): string;
+var
+  IdMD5: TIdHashMessageDigest5;
+  FS: TFileStream;
+begin
+  IdMD5 := TIdHashMessageDigest5.Create;
+  FS := TFileStream.Create(FileName, fmOpenRead or fmShareDenyWrite);
+  try
+    Result := IdMD5.HashStreamAsHex(FS)
+  finally
+    FS.Free;
+    IdMD5.Free;
+  end;
 end;
 
 end.

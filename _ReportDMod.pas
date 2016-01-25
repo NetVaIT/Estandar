@@ -25,6 +25,7 @@ type
     ppDesignLayer1: TppDesignLayer;
     ppParameterList1: TppParameterList;
     mdParams: TdxMemData;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
     FTitle: string;
@@ -48,13 +49,16 @@ uses _ConectionDmod;
 
 { T_dmReport }
 
+procedure T_dmReport.DataModuleCreate(Sender: TObject);
+begin
+  mdParams.Open;
+  mdParams.Insert;
+end;
+
 procedure T_dmReport.Execute;
 var
   ShowReport: Boolean;
 begin
-  mdParams.Open;
-  mdParams.Insert;
-
   if Assigned(gReportForm) then
   begin
     gReportForm.DataSetParams:= mdParams;

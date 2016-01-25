@@ -1,5 +1,6 @@
 object _dmReport: T_dmReport
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 156
   Width = 394
   object adodsReport: TADODataSet
