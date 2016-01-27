@@ -19,8 +19,7 @@ type
     adoqUsuariosIdPersona: TIntegerField;
     adoqUsuariosRazonSocial: TStringField;
     adoqUsuariosLogin: TStringField;
-    adoqUsuariosClaveUsuario: TStringField;
-    adoqUsuariosPermiso: TStringField;
+    adoqUsuariosPassword: TStringField;
     procedure ADOConnectionConnectComplete(Connection: TADOConnection;
       const Error: Error; var EventStatus: TEventStatus);
     procedure ADOConnectionDisconnect(Connection: TADOConnection;
@@ -125,7 +124,7 @@ var
   begin
     adoqUsuarios.Open;
     if adoqUsuarios.Locate('Login', frmLogin.User, []) then
-      if (frmLogin.Password = Trim(adoqusuariosClaveUsuario.AsString)) then
+      if (frmLogin.Password = Trim(adoqusuariosPassword.AsString)) then
       begin
         Result:= True;
         FIdUsuario:= adoqUsuariosIdUsuario.Value;

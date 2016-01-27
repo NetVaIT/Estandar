@@ -5,7 +5,7 @@ object _dmConection: T_dmConection
   object ADOConnection: TADOConnection
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=as47Pw3K;Persist Security Info=True' +
-      ';User ID=sa;Initial Catalog=MASEnProceso;Data Source=NAS1\COMPAC'
+      ';User ID=sa;Initial Catalog=MAS;Data Source=NAS1\COMPAC'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     OnDisconnect = ADOConnectionDisconnect
@@ -20,7 +20,7 @@ object _dmConection: T_dmConection
     SQL.Strings = (
       
         'SELECT Usuarios.IdUsuario, Usuarios.IdPersona, Personas.RazonSoc' +
-        'ial, Usuarios.Login, Usuarios.ClaveUsuario, Usuarios.Permiso'
+        'ial, Usuarios.Login, Usuarios.Password, Usuarios.Permiso'
       'FROM Usuarios'
       'INNER JOIN Personas ON Usuarios.IdPersona = Personas.IdPersona'
       'WHERE Usuarios.IdUsuarioEstatus = 1')
@@ -41,8 +41,8 @@ object _dmConection: T_dmConection
       FieldName = 'Login'
       Size = 15
     end
-    object adoqUsuariosClaveUsuario: TStringField
-      FieldName = 'ClaveUsuario'
+    object adoqUsuariosPassword: TStringField
+      FieldName = 'Password'
       Size = 15
     end
     object adoqUsuariosPermiso: TStringField

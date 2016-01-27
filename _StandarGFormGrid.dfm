@@ -109,7 +109,6 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
       Left = 0
       Top = 0
       Action = DataSetInsert
-      Visible = False
     end
     object ToolButton2: TToolButton
       Left = 23
@@ -124,7 +123,6 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
       Left = 31
       Top = 0
       Action = DataSetDelete
-      Visible = False
     end
     object ToolButton4: TToolButton
       Left = 54
@@ -231,7 +229,7 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
     Left = 584
     Top = 8
     Bitmap = {
-      494C010102000400C00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000400C40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -408,14 +406,7 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
       Hint = 'Insertar'
       ImageIndex = 4
       ShortCut = 45
-      DataSource = DataSource
-    end
-    object DataSetDelete: TDataSetDelete
-      Category = 'Dataset'
-      Caption = '&Eliminar'
-      Hint = 'Eliminar'
-      ImageIndex = 5
-      OnExecute = DataSetDeleteExecute
+      Visible = False
       DataSource = DataSource
     end
     object DataSetEdit: TDataSetEdit
@@ -423,6 +414,16 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
       Caption = '&Editar'
       Hint = 'Editar'
       ImageIndex = 6
+      Visible = False
+      DataSource = DataSource
+    end
+    object DataSetDelete: TDataSetDelete
+      Category = 'Dataset'
+      Caption = '&Eliminar'
+      Hint = 'Eliminar'
+      ImageIndex = 5
+      Visible = False
+      OnExecute = DataSetDeleteExecute
       DataSource = DataSource
     end
     object DataSetPost: TDataSetPost
@@ -469,7 +470,7 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
     Left = 648
     Top = 8
     Bitmap = {
-      494C01010C00B801E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010C00B801E80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
