@@ -57,7 +57,7 @@ object _frmStandarGFormEdit: T_frmStandarGFormEdit
     Width = 750
     Height = 41
     Align = alBottom
-    TabOrder = 0
+    TabOrder = 4
     Visible = False
   end
   object pnlDetail3: TPanel
@@ -67,7 +67,7 @@ object _frmStandarGFormEdit: T_frmStandarGFormEdit
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 1
+    TabOrder = 3
     Visible = False
   end
   object pnlDetail2: TPanel
@@ -87,7 +87,7 @@ object _frmStandarGFormEdit: T_frmStandarGFormEdit
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 3
+    TabOrder = 1
     Visible = False
   end
   object pcMain: TcxPageControl
@@ -96,7 +96,7 @@ object _frmStandarGFormEdit: T_frmStandarGFormEdit
     Width = 750
     Height = 477
     Align = alClient
-    TabOrder = 4
+    TabOrder = 0
     Properties.ActivePage = tsGeneral
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
@@ -107,10 +107,6 @@ object _frmStandarGFormEdit: T_frmStandarGFormEdit
     object tsGeneral: TcxTabSheet
       Caption = 'General'
       ImageIndex = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxScrollBox1: TcxScrollBox
         Left = 0
         Top = 0
@@ -221,7 +217,7 @@ object _frmStandarGFormEdit: T_frmStandarGFormEdit
     Left = 630
     Top = 8
     Bitmap = {
-      494C0101020004003C0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000400440110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -392,6 +388,14 @@ object _frmStandarGFormEdit: T_frmStandarGFormEdit
       ImageIndex = 3
       DataSource = DataSource
     end
+    object DataSetRefresh: TDataSetRefresh
+      Category = 'Dataset'
+      Caption = '&Actualizar'
+      Hint = 'Actualizar'
+      ImageIndex = 9
+      ShortCut = 116
+      DataSource = DataSource
+    end
     object DataSetInsert: TDataSetInsert
       Category = 'Dataset'
       Caption = '&Insertar'
@@ -401,19 +405,21 @@ object _frmStandarGFormEdit: T_frmStandarGFormEdit
       OnExecute = DataSetInsertExecute
       DataSource = DataSource
     end
-    object DataSetDelete: TDataSetDelete
-      Category = 'Dataset'
-      Caption = '&Eliminar'
-      Hint = 'Eliminar'
-      ImageIndex = 5
-      OnExecute = DataSetDeleteExecute
-      DataSource = DataSource
-    end
     object DataSetEdit: TDataSetEdit
       Category = 'Dataset'
       Caption = '&Editar'
       Hint = 'Editar'
       ImageIndex = 6
+      ShortCut = 113
+      DataSource = DataSource
+    end
+    object DataSetDelete: TDataSetDelete
+      Category = 'Dataset'
+      Caption = '&Eliminar'
+      Hint = 'Eliminar'
+      ImageIndex = 5
+      ShortCut = 16430
+      OnExecute = DataSetDeleteExecute
       DataSource = DataSource
     end
     object DataSetPost: TDataSetPost
@@ -428,13 +434,7 @@ object _frmStandarGFormEdit: T_frmStandarGFormEdit
       Caption = '&Cancelar'
       Hint = 'Cancelar'
       ImageIndex = 8
-      DataSource = DataSource
-    end
-    object DataSetRefresh: TDataSetRefresh
-      Category = 'Dataset'
-      Caption = '&Actualizar'
-      Hint = 'Actualizar'
-      ImageIndex = 9
+      ShortCut = 27
       DataSource = DataSource
     end
     object FileSaveAs1: TFileSaveAs
@@ -466,7 +466,7 @@ object _frmStandarGFormEdit: T_frmStandarGFormEdit
     Left = 696
     Top = 8
     Bitmap = {
-      494C01010C000E00600110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010C000E00680110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

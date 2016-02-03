@@ -62,6 +62,11 @@ type
     pnlDetail1: TPanel;
     splDetail1: TSplitter;
     pnltoolbar: TPanel;
+    pnlMaster: TPanel;
+    cxGrid: TcxGrid;
+    tvMaster: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    actCloseGrid: TAction;
     tbarGrid: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -74,13 +79,12 @@ type
     ToolButton9: TToolButton;
     ToolButton21: TToolButton;
     ToolButton22: TToolButton;
-    pnlMaster: TPanel;
-    cxGrid: TcxGrid;
-    tvMaster: TcxGridDBTableView;
-    cxGridLevel1: TcxGridLevel;
     ToolButton10: TToolButton;
     tbtnCerrar: TToolButton;
-    actCloseGrid: TAction;
+    PopupMenu: TPopupMenu;
+    Insertar1: TMenuItem;
+    Editar1: TMenuItem;
+    Eliminar1: TMenuItem;
     procedure pcMainChanging(Sender: TObject; var AllowChange: Boolean);
     procedure FormShow(Sender: TObject);
 //    procedure DBGridDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -91,26 +95,31 @@ type
       ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
       out AStyle: TcxStyle);
     procedure actCloseGridExecute(Sender: TObject);
+    procedure tvMasterCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     { Private declarations }
     FReadOnlyGrid: Boolean;
     FDataSet: TDataSet;
     FView: Boolean;
     FCerrarGrid: TBasicAction;
+    FApplyBestFit: Boolean;
     procedure SetReadOnlyGrid(const Value: Boolean);
     procedure SetView(const Value: Boolean);
     procedure SetDataSet(const Value: TDataSet);
     procedure SetCerrarGrid(const Value: TBasicAction);
   protected
     tvStatus: TcxGridDBColumn;
-    property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
   public
     { Public declarations }
-    property DataSet: TDataSet read FDataSet write SetDataSet;
     procedure GetContentStyle(pStatus: TcxGridDBColumn;
       pRecord: TcxCustomGridRecord; pItem: TcxCustomGridTableItem;
       out pStyle: TcxStyle);
+    property DataSet: TDataSet read FDataSet write SetDataSet;
+    property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
     property View: Boolean read FView write SetView default False;
+    property ApplyBestFit: Boolean read FApplyBestFit write FApplyBestFit default True;
     property CerrarGrid : TBasicAction read FCerrarGrid write SetCerrarGrid;
   end;
 
@@ -173,7 +182,8 @@ begin
     cxGrid.SetFocus;
     tvMaster.ViewData.Expand(True);
   end;}
-  tvMaster.ApplyBestFit();
+  if ApplyBestFit then
+    tvMaster.ApplyBestFit();
 end;
 
 procedure T_frmStandarGFormGrid.GetContentStyle(pStatus: TcxGridDBColumn;
@@ -251,6 +261,14 @@ begin
 //    btnCancel.Caption:= 'Cerrar'
 //  else
 //    btnCancel.Caption:= '&Cancelar'
+end;
+
+procedure T_frmStandarGFormGrid.tvMasterCellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  if actCloseGrid.Visible then
+    actCloseGrid.Execute;
 end;
 
 procedure T_frmStandarGFormGrid.tvMasterStylesGetContentStyle(
