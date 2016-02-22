@@ -80,6 +80,7 @@ procedure ExecuteUntilFinish(ExecuteFile : string);
 function EjecutarYEsperar( sPrograma: String; Visibilidad: Integer ): Integer;
 function xIntToLletras(Numero:LongInt):String;
 function MD5File(const FileName: string): string;
+procedure BorraSoloArchivos(Const dirName:String);  //aban
 
 implementation
 
@@ -424,6 +425,29 @@ begin
   finally
     FS.Free;
     IdMD5.Free;
+  end;
+end;
+
+procedure BorraSoloArchivos(Const dirName:String);     //aban Feb 22/16
+var
+  Path: string;
+  F: TSearchRec;
+begin
+  try
+    Path:= DirName + '\*.*';
+    if FindFirst(Path, faAnyFile, F) = 0 then begin
+      try
+        repeat
+          DeleteFile(DirName + '\' + F.Name);
+        until FindNext(F) <> 0;
+      finally
+        FindClose(F);
+      end;
+    end;
+
+  except
+    on e:exception do begin
+    end;
   end;
 end;
 
