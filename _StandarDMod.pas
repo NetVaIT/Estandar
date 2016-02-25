@@ -73,6 +73,7 @@ end;
 
 function T_dmStandar.Add: Integer;
 begin
+  if not Assigned(frmEdit) then exit;
   adodsUpdate.Open;
   try
     frmEdit.DataSet:= adodsUpdate;
@@ -104,6 +105,7 @@ end;
 
 procedure T_dmStandar.Edit(Id: Integer);
 begin
+  if not Assigned(frmEdit) then exit;
   adodsUpdate.Close;
   adodsUpdate.Parameters[0].Value:= Id;
   adodsUpdate.Open;
@@ -156,6 +158,7 @@ end;
 
 procedure T_dmStandar.View(Id: Integer);
 begin
+  if not Assigned(frmEdit) then exit;
   adodsUpdate.Close;
   adodsUpdate.Parameters[0].Value:= Id;
   adodsUpdate.Open;

@@ -147,22 +147,18 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
         Top = 0
         Action = DataSetInsert
       end
-      object ToolButton2: TToolButton
+      object btnEdit: TToolButton
         Left = 23
         Top = 0
-        Width = 8
-        Caption = 'ToolButton2'
-        ImageIndex = 1
-        Style = tbsSeparator
-        Visible = False
+        Action = DataSetEdit
       end
       object ToolButton3: TToolButton
-        Left = 31
+        Left = 46
         Top = 0
         Action = DataSetDelete
       end
       object ToolButton4: TToolButton
-        Left = 54
+        Left = 69
         Top = 0
         Width = 8
         Caption = 'ToolButton4'
@@ -171,32 +167,50 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
         Visible = False
       end
       object ToolButton5: TToolButton
-        Left = 62
+        Left = 77
         Top = 0
         Action = DataSetFirst
       end
       object ToolButton6: TToolButton
-        Left = 85
+        Left = 100
         Top = 0
         Action = DataSetPrior
       end
       object ToolButton7: TToolButton
-        Left = 108
+        Left = 123
         Top = 0
         Action = DataSetNext
       end
       object ToolButton8: TToolButton
-        Left = 131
+        Left = 146
         Top = 0
         Action = DataSetLast
       end
       object ToolButton9: TToolButton
-        Left = 154
+        Left = 169
         Top = 0
         Action = DataSetRefresh
       end
+      object ToolButton2: TToolButton
+        Left = 192
+        Top = 0
+        Width = 8
+        Caption = 'ToolButton2'
+        ImageIndex = 1
+        Style = tbsSeparator
+      end
+      object btnPost: TToolButton
+        Left = 200
+        Top = 0
+        Action = DataSetPost
+      end
+      object btnCancel: TToolButton
+        Left = 223
+        Top = 0
+        Action = DataSetCancel
+      end
       object ToolButton21: TToolButton
-        Left = 177
+        Left = 246
         Top = 0
         Width = 8
         Caption = 'ToolButton21'
@@ -204,12 +218,12 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
         Style = tbsSeparator
       end
       object ToolButton22: TToolButton
-        Left = 185
+        Left = 254
         Top = 0
         Action = FileSaveAs1
       end
       object ToolButton10: TToolButton
-        Left = 208
+        Left = 277
         Top = 0
         Width = 8
         Caption = 'ToolButton10'
@@ -217,7 +231,7 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
         Style = tbsSeparator
       end
       object tbtnCerrar: TToolButton
-        Left = 216
+        Left = 285
         Top = 0
         Action = actCloseGrid
       end
@@ -231,7 +245,7 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
     Left = 584
     Top = 8
     Bitmap = {
-      494C010102000400DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000400F40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -443,6 +457,7 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
       Caption = '&Aceptar'
       Hint = 'Aceptar'
       ImageIndex = 7
+      Visible = False
       DataSource = DataSource
     end
     object DataSetCancel: TDataSetCancel
@@ -451,6 +466,7 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
       Hint = 'Cancelar'
       ImageIndex = 8
       ShortCut = 27
+      Visible = False
       DataSource = DataSource
     end
     object FileSaveAs1: TFileSaveAs
@@ -475,7 +491,7 @@ object _frmStandarGFormGrid: T_frmStandarGFormGrid
     Left = 648
     Top = 8
     Bitmap = {
-      494C01010C00B801000110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010C00B801180110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -85,6 +85,9 @@ type
     Insertar1: TMenuItem;
     Editar1: TMenuItem;
     Eliminar1: TMenuItem;
+    btnEdit: TToolButton;
+    btnPost: TToolButton;
+    btnCancel: TToolButton;
     procedure pcMainChanging(Sender: TObject; var AllowChange: Boolean);
     procedure FormShow(Sender: TObject);
 //    procedure DBGridDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -247,9 +250,12 @@ end;
 procedure T_frmStandarGFormGrid.SetReadOnlyGrid(const Value: Boolean);
 begin
   FReadOnlyGrid := Value;
+  DataSource.AutoEdit:= not Value;
   DataSetInsert.Visible:= not Value;
-  ToolButton2.Visible:= not Value;
+  DataSetEdit.Visible:= not Value;
   DataSetDelete.Visible:= not Value;
+  DataSetPost.Visible:= not Value;
+  DataSetCancel.Visible:= not Value;
   ToolButton4.Visible:= not Value;
 end;
 

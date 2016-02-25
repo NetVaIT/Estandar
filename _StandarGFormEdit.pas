@@ -95,22 +95,21 @@ type
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-    FReadOnlyGrid: Boolean;
     FDataSet: TDataSet;
     FgGridForm : T_frmStandarGFormGrid;
     FContainerDetail2: TCustomControl;
     FContainerDetail3: TCustomControl;
     FContainerDetail1: TCustomControl;
     FContainerDetail4: TCustomControl;
-    procedure SetReadOnlyGrid(const Value: Boolean);
+    FReadOnlyGrid: Boolean;
     procedure SetDataSet(const Value: TDataSet);
     procedure SetContainerDetail1(const Value: TCustomControl);
     procedure SetContainerDetail2(const Value: TCustomControl);
     procedure SetContainerDetail3(const Value: TCustomControl);
     procedure SetContainerDetail4(const Value: TCustomControl);
+    procedure SetReadOnlyGrid(const Value: Boolean);
   protected
     tvStatus: TcxGridDBColumn;
-    property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
     property gFormGrid : T_frmStandarGFormGrid read FgGridForm write FgGridForm;
   public
     { Public declarations }
@@ -122,6 +121,7 @@ type
     procedure GetContentStyle(pStatus: TcxGridDBColumn;
       pRecord: TcxCustomGridRecord; pItem: TcxCustomGridTableItem;
       out pStyle: TcxStyle);
+    property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid;
   end;
 
 implementation
@@ -271,8 +271,8 @@ end;
 procedure T_frmStandarGFormEdit.SetReadOnlyGrid(const Value: Boolean);
 begin
   FReadOnlyGrid := Value;
-  DataSetInsert.Visible:= not Value;
-  DataSetDelete.Visible:= not Value;
+  if Assigned(gFormGrid) then
+    gFormGrid.ReadOnlyGrid:= Value;
 end;
 
 procedure T_frmStandarGFormEdit.tvMasterStylesGetContentStyle(
