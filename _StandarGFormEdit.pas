@@ -121,7 +121,7 @@ type
     procedure GetContentStyle(pStatus: TcxGridDBColumn;
       pRecord: TcxCustomGridRecord; pItem: TcxCustomGridTableItem;
       out pStyle: TcxStyle);
-    property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid;
+    property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
   end;
 
 implementation
