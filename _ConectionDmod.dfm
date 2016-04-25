@@ -20,9 +20,13 @@ object _dmConection: T_dmConection
     SQL.Strings = (
       
         'SELECT Usuarios.IdUsuario, Usuarios.IdPersona, Personas.RazonSoc' +
-        'ial, Usuarios.Login, Usuarios.Password, Usuarios.Permiso'
+        'ial, Usuarios.Login, Usuarios.Password, Usuarios.Permiso,'
+      'UP.PermisoMenu, UP.PermisoOpcion, UP.PermisosFuncion'
       'FROM Usuarios'
       'INNER JOIN Personas ON Usuarios.IdPersona = Personas.IdPersona'
+      
+        'LEFT JOIN UsuariosPerfiles UP ON Usuarios.IdUsuarioPerfil=UP.IdU' +
+        'suarioPerfil'
       'WHERE Usuarios.IdUsuarioEstatus = 1')
     Left = 32
     Top = 72
@@ -48,6 +52,18 @@ object _dmConection: T_dmConection
     object adoqUsuariosPermiso: TStringField
       FieldName = 'Permiso'
       Size = 255
+    end
+    object adoqUsuariosPermisoMenu: TStringField
+      FieldName = 'PermisoMenu'
+      Size = 300
+    end
+    object adoqUsuariosPermisoOpcion: TStringField
+      FieldName = 'PermisoOpcion'
+      Size = 500
+    end
+    object adoqUsuariosPermisosFuncion: TStringField
+      FieldName = 'PermisosFuncion'
+      Size = 300
     end
   end
 end

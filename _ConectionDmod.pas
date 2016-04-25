@@ -20,6 +20,9 @@ type
     adoqUsuariosRazonSocial: TStringField;
     adoqUsuariosLogin: TStringField;
     adoqUsuariosPassword: TStringField;
+    adoqUsuariosPermisoMenu: TStringField;
+    adoqUsuariosPermisoOpcion: TStringField;
+    adoqUsuariosPermisosFuncion: TStringField;
     procedure ADOConnectionConnectComplete(Connection: TADOConnection;
       const Error: Error; var EventStatus: TEventStatus);
     procedure ADOConnectionDisconnect(Connection: TADOConnection;
@@ -36,6 +39,9 @@ type
     FIdUsuario: Integer;
     FIdPersona: Integer;
     FUsuario: string;
+    FPerOpcion: String;  //Aban Abr. 25/16
+    FPerMenu: String;  //Aban Abr. 25/16
+    FPerFuncion: String;  //Aban Abr. 25/16
     procedure SetExePath(const Value: string);
   public
     { Public declarations }
@@ -53,6 +59,10 @@ type
 //    property Operador: String read FOperador;
 //    property NombreOperador: String read FNombreOperador;
     property ADMIN_PROD: String read FADMIN_PROD;
+    property PerMenu:String read FPerMenu;     //Aban Abr. 25/16
+    property PerOpcion:String read FPerOpcion;   //Aban Abr. 25/16
+    property PerFuncion:String read FPerFuncion;  //Aban Abr. 25/16
+
   end;
 
 var
@@ -132,6 +142,8 @@ var
         FIdPersona:= adoqUsuariosIdPersona.Value;
         FNombrePersona:= adoqUsuariosRazonSocial.AsString;
 //        FADMIN_PROD:= adoqOperadoresADMIN_PROD.Value;
+        FPerMenu:=adoqUsuariosPermisoMenu.Value; //Abr 25/16
+        FPerOpcion:=adoqUsuariosPermisoOpcion.Value; //Abr 25/16
       end
       else
       begin

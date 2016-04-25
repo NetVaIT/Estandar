@@ -53,12 +53,14 @@ object _frmGrid: T_frmGrid
   end
   object pnlMaster: TPanel
     Left = 0
-    Top = 31
+    Top = 28
     Width = 651
-    Height = 253
+    Height = 256
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitTop = 31
+    ExplicitHeight = 253
     object cxGrid: TcxGrid
       Left = 0
       Top = 0
@@ -284,7 +286,7 @@ object _frmGrid: T_frmGrid
     DockControlHeights = (
       0
       0
-      31
+      28
       0)
     object dxbNavigator: TdxBar
       AllowClose = False
@@ -293,7 +295,7 @@ object _frmGrid: T_frmGrid
       Caption = 'Navegaci'#243'n'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
-      DockedLeft = 105
+      DockedLeft = 107
       DockedTop = 0
       DockingStyle = dsTop
       FloatLeft = 592
@@ -371,7 +373,7 @@ object _frmGrid: T_frmGrid
       Caption = 'Herramientas'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
-      DockedLeft = 233
+      DockedLeft = 238
       DockedTop = 0
       DockingStyle = dsTop
       FloatLeft = 624
@@ -1282,6 +1284,7 @@ object _frmGrid: T_frmGrid
       PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 1
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
