@@ -257,6 +257,8 @@ begin
   DataSetPost.Visible:= not Value;
   DataSetCancel.Visible:= not Value;
   ToolButton4.Visible:= not Value;
+  tvMaster.OptionsData.Appending:= not Value;
+  tvMaster.OptionsData.Editing:= not Value;
 end;
 
 procedure T_frmStandarGFormGrid.SetView(const Value: Boolean);

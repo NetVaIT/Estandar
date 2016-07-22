@@ -15,6 +15,7 @@ object _frmEdit: T_frmEdit
   Position = poMainFormCenter
   ShowHint = True
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13

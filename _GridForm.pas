@@ -121,11 +121,13 @@ type
     FgEditForm: T_frmEdit;
     FView: Boolean;
     FactSearch: TBasicAction;
+    FPrintTitle: string;
     procedure SetReadOnlyGrid(const Value: Boolean);
     procedure SetDataSet(const Value: TDataSet);
     procedure SetView(const Value: Boolean);
     procedure SetactSearch(const Value: TBasicAction);
     procedure InsertMenuItem;
+    procedure SetPrintTitle(const Value: string);
   protected
     tvStatus: TcxGridDBColumn;
     property gEditForm: T_frmEdit read FgEditForm write FgEditForm;
@@ -135,6 +137,7 @@ type
     property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
     property View: Boolean read FView write SetView default False;
     property actSearch: TBasicAction read FactSearch write SetactSearch;
+    property PrintTitle: string read FPrintTitle write SetPrintTitle;
   end;
 
 implementation
@@ -155,7 +158,6 @@ end;
 
 procedure T_frmGrid.actPreviewExecute(Sender: TObject);
 begin
-//  dxComponentPrinter.PrintEx(pnAll,1,False);
   dxComponentPrinter.Preview();
 end;
 
@@ -248,6 +250,16 @@ procedure T_frmGrid.SetDataSet(const Value: TDataSet);
 begin
   FDataSet := Value;
   DataSource.DataSet:= Value;
+end;
+
+procedure T_frmGrid.SetPrintTitle(const Value: string);
+begin
+  FPrintTitle := Value;
+  dxComponentPrinter.PrintTitle:= Value;
+  dxcplGrid.ReportTitleText:= Value;
+  dxcplGrid.ReportDocument.Caption:= Value;
+  dxcplGrid.PDFExportOptions.Title:= Value;
+  dxcplGrid.PDFExportOptions.DefaultFileName:= Value;
 end;
 
 procedure T_frmGrid.SetReadOnlyGrid(const Value: Boolean);

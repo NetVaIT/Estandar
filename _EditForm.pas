@@ -37,16 +37,21 @@ type
     procedure actCancelExecute(Sender: TObject);
     procedure pcMainChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
   private
+    { Private declarations }
     FDataSet: TDataSet;
     FView: Boolean;
+    FieldDescripcion: TField;
+    FDescripcion: string;
     procedure SetDataSet(const Value: TDataSet);
     procedure SetView(const Value: Boolean);
-    { Private declarations }
+    procedure SetDescripcion(const Value: string);
   public
     { Public declarations }
     property View: Boolean read FView write SetView default False;
     property DataSet: TDataSet read FDataSet write SetDataSet;
+    property Descripcion: string read FDescripcion write SetDescripcion;
   end;
 
 implementation
@@ -80,9 +85,16 @@ begin
     DataSource.DataSet.Cancel;
 end;
 
+procedure T_frmEdit.FormCreate(Sender: TObject);
+begin
+  Descripcion:= 'Descripcion';
+end;
+
 procedure T_frmEdit.FormShow(Sender: TObject);
 begin
   pcMain.ActivePage := tsGeneral;
+  if Assigned(FieldDescripcion) and (FieldDescripcion is TStringField) then
+    Caption:= FieldDescripcion.AsString;
 end;
 
 procedure T_frmEdit.pcMainChange(Sender: TObject);
@@ -99,7 +111,16 @@ end;
 procedure T_frmEdit.SetDataSet(const Value: TDataSet);
 begin
   FDataSet := Value;
-  DataSource.DataSet:= Value;
+  if Assigned(Value) then
+  begin
+    DataSource.DataSet:= Value;
+    FieldDescripcion:= Value.FindField(Descripcion);
+  end;
+end;
+
+procedure T_frmEdit.SetDescripcion(const Value: string);
+begin
+  FDescripcion := Value;
 end;
 
 procedure T_frmEdit.SetView(const Value: Boolean);

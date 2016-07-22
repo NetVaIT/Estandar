@@ -53,14 +53,12 @@ object _frmGrid: T_frmGrid
   end
   object pnlMaster: TPanel
     Left = 0
-    Top = 28
+    Top = 31
     Width = 651
-    Height = 256
+    Height = 253
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitTop = 31
-    ExplicitHeight = 253
     object cxGrid: TcxGrid
       Left = 0
       Top = 0
@@ -286,7 +284,7 @@ object _frmGrid: T_frmGrid
     DockControlHeights = (
       0
       0
-      28
+      31
       0)
     object dxbNavigator: TdxBar
       AllowClose = False
@@ -295,7 +293,7 @@ object _frmGrid: T_frmGrid
       Caption = 'Navegaci'#243'n'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
-      DockedLeft = 107
+      DockedLeft = 105
       DockedTop = 0
       DockingStyle = dsTop
       FloatLeft = 592
@@ -373,7 +371,7 @@ object _frmGrid: T_frmGrid
       Caption = 'Herramientas'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
-      DockedLeft = 238
+      DockedLeft = 233
       DockedTop = 0
       DockingStyle = dsTop
       FloatLeft = 624
@@ -1276,25 +1274,32 @@ object _frmGrid: T_frmGrid
   end
   object dxComponentPrinter: TdxComponentPrinter
     CurrentLink = dxcplGrid
+    PreviewOptions.Caption = 'Vista previa'
     Version = 0
     Left = 152
     Top = 215
     object dxcplGrid: TdxGridReportLink
+      Active = True
       Component = cxGrid
-      PageNumberFormat = pnfNumeral
+      DesignerCaption = 'Formato del reporte'
       PrinterPage.DMPaper = 1
       PrinterPage.Footer = 6350
-      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
       PrinterPage.Margins.Right = 12700
       PrinterPage.Margins.Top = 12700
+      PrinterPage.Orientation = poLandscape
+      PrinterPage.PageFooter.RightTitle.Strings = (
+        '[Page # of Pages #]'
+        '[Date & Time Printed]')
       PrinterPage.PageSize.X = 215900
       PrinterPage.PageSize.Y = 279400
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 42465.504686493060000000
+      OptionsView.Caption = False
+      OptionsView.FilterBar = False
       BuiltInReportLink = True
     end
   end
