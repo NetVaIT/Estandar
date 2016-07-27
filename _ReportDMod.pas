@@ -29,7 +29,9 @@ type
   private
     { Private declarations }
     FTitle: string;
+    FPDFFileName: TFileName;
     procedure SetTitle(const Value: string);
+    procedure SetPDFFileName(const Value: TFileName);
   protected
     gReportForm: T_frmReport;
   public
@@ -37,6 +39,7 @@ type
     procedure AssignParam; virtual; abstract;
     procedure Execute; virtual;
     property Title: string read FTitle write SetTitle;
+    property PDFFileName: TFileName read FPDFFileName write SetPDFFileName;
   end;
 
 implementation
@@ -76,6 +79,20 @@ begin
     finally
       adodsReport.Close;
     end;
+  end;
+end;
+
+procedure T_dmReport.SetPDFFileName(const Value: TFileName);
+begin
+  FPDFFileName := Value;
+  if Value <> EmptyStr then
+  begin
+      ppReport.ShowPrintDialog:= False;
+      ppReport.ShowCancelDialog:= False;
+//      ppReport.AllowPrintToArchive:= False;
+      ppReport.DeviceType:= 'PDF';
+//      ppReport.PDFSettings.OpenPDFFile := False;
+      ppReport.TextFileName:= Value;
   end;
 end;
 
